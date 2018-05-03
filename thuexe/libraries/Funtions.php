@@ -20,6 +20,11 @@ function modules($url)
     return base_url() . "admin/modules/" . $url;
 }
 
+function uploads()
+{
+    return base_url() . "public/uploads/";
+}
+
 if (!function_exists('redirectAdmin')) {
     function redirectAdmin($url = "")
     {

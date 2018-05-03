@@ -50,7 +50,7 @@ $xe = $db->fetchAll("xe");
                         <td><?php echo $item['maxe'] ?></td>
                         <td><?php echo $item['tenxe'] ?></td>
                         <td>
-                            <img src="<?php echo uploads()?>vehicle/<?php echo $item['hinhanh'] ?>" width="80px" height="80px" alt="">
+                            <img src="<?php echo uploads()?>xe/<?php echo $item['hinhanh'] ?>" width="80px" height="80px" alt="">
                         </td>
                         <td><?php echo $item['soluong'] ?></td>
                         <td><?php echo $item['slug'] ?></td>
