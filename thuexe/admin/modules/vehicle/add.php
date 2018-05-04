@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         {
             move_uploaded_file($file_tmp, $part.$file_name);
             $_SESSION['success'] = 'Them xe thanh cong';
-//            redirectAdmin('vehicle');
+            redirectAdmin('vehicle');
         }
         else{
             $_SESSION['error'] = 'Them xe that bai';
@@ -108,7 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             <form action="" method="post" enctype="multipart/form-data">
                 <form>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Ma loai xe</label>
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Ten loai xe</label>
                         <div class="col-sm-4">
                             <select class="form-control" required name="maloai" id="">
                                 <option value="" >- Chon loai xe -</option>

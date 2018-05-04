@@ -98,18 +98,72 @@ class Database
             or die ("Loi truy van fetchOne " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
-    
+
+    // Pagination: Phan trang
+    public  function fetchJone($table,$sql ,$page = 0,$row ,$pagi = false )
+    {
+
+        $data = [];
+        // _debug($sql);die;
+        if ($pagi == true )
+        {
+            $total = $this->countTableXe($table);
+            $sotrang = ceil($total / $row);
+            $start = ($page - 1 ) * $row ;
+            $sql .= " LIMIT $start,$row";
+            $data = [ "page" => $sotrang];
+
+            $result = mysqli_query($this->link,$sql) or die("Lỗi truy vấn fetchJone ---- " .mysqli_error($this->link));
+        }
+        else
+        {
+            $result = mysqli_query($this->link,$sql) or die("Lỗi truy vấn fetchJone ---- " .mysqli_error($this->link));
+        }
+
+        if( $result)
+        {
+            while ($num = mysqli_fetch_assoc($result))
+            {
+                $data[] = $num;
+            }
+        }
+        // _debug($data);
+        return $data;
+    }
+
+    public function countTableXe($table){
+        $sql = "SELECT maxe FROM {$table}";
+        $result = mysqli_query($this->link, $sql) or die("Loi truy van countTable")
+        .mysqli_error($this->link);
+        $num = mysqli_num_rows($result);
+        return $num;
+    }
+
     public function fetchIDLoaiXe($table, $id){
         $sql = "SELECT * FROM {$table} WHERE maloai = $id";
         $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchIDLoaiXe: " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
+    public function fetchIDXe($table, $id){
+        $sql = "SELECT * FROM {$table} WHERE maxe = $id";
+        $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchIDLoaiXe: " .mysqli_error($this->link));
+        return mysqli_fetch_assoc($result);
+    }
+
 
 
     //Xoa loai xe
     public function deleteLoaiXe($table, $id)
     {
         $sql = "DELETE FROM {$table} WHERE maloai = $id";
+        mysqli_query($this->link, $sql) or die (" Loi truy van deleteLoaiXe: " .mysqli_error($this->link));
+        return mysqli_affected_rows($this->link);
+
+    }
+    //Xoa xe
+    public function deleteXe($table, $id)
+    {
+        $sql = "DELETE FROM {$table} WHERE maxe = $id";
         mysqli_query($this->link, $sql) or die (" Loi truy van deleteLoaiXe: " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
 

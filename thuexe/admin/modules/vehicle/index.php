@@ -2,10 +2,26 @@
 $open = 'vehicle';
 require_once __DIR__. "/../../autoload/autoload.php";
 
-$xe = $db->fetchAll("xe");
+if(isset($_GET['page']))
+{
+    $p = $_GET['page'];
+}
+else{
+    $p = 1;
+}
+// cac xe khong co thuoc loai xe nao cung se duoc in ra
+$sql = "SELECT xe.*, loai.maloai as namecate FROM xe left join loai on loai.maloai = xe.maloai";
+$xe = $db->fetchJone('xe',$sql,$p,3,true);
+
+if(isset($xe['page']))
+{
+    $sotrang = $xe['page'];
+    unset($xe['page']);
+}
+
+//$xe = $db->fetchAll("xe");
 ?>
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>
-
     <div class="content-wrapper">
     <div class="container-fluid">
         <h3>Quan ly thong tin cac xe
@@ -61,8 +77,8 @@ $xe = $db->fetchAll("xe");
                         <td><?php echo $item['he_thong_kd'] ?></td>
                         <td><?php echo $item['tao_luc'] ?></td>
                         <td>
-                            <a href="edit.php?maloai=<?php echo $item['maloai'] ?>" class="btn btn-xs mb-1 btn-warning"><i class="fa mr-1 fa-edit"></i>Sua</a>
-                            <a href="delete.php?maloai=<?php echo $item['maloai'] ?>" class="btn btn-xs mb-1 btn-danger"><i class="fa mr-1 fa-remove"></i>Xoa</a>
+                            <a href="edit.php?maxe=<?php echo $item['maxe'] ?>" class="btn btn-xs mb-1 btn-warning"><i class="fa mr-1 fa-edit"></i>Sua</a>
+                            <a href="delete.php?maxe=<?php echo $item['maxe'] ?>" class="btn btn-xs mb-1 btn-danger"><i class="fa mr-1 fa-remove"></i>Xoa</a>
                         </td>
                     </tr>
                     <?php $stt++;endforeach ?>
@@ -70,11 +86,25 @@ $xe = $db->fetchAll("xe");
             </table>
             <nav aria-label="Page navigation example" class="pull-right">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+<!--                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?php echo $p-1 ;?>">Previous</a>
+                    </li>
+                    <?php for($i=1; $i <= $sotrang; $i++) :?>
+                        <?php
+                            if(isset($_GET['page']))
+                            {
+                                $p = $_GET['page'];
+                            }
+                            else{
+                                $p = 1;
+                            }
+                        ?>
+                        <li class="page-item <?php echo ($i == $p) ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?php echo $i ;?>"><?php echo $i; ?></a>
+                        </li>
+                        <?php endfor; ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?php echo $p+1; ?>">Next</a></li>
                 </ul>
             </nav>
         </div>
