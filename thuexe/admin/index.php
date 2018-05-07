@@ -11,13 +11,12 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <h5>Dashboard</h5>
                 </li>
-                <li class="breadcrumb-item active">My Dashboard</li>
             </ol>
             <!-- Icon Cards-->
-            <div class="row">
-
+            <div class="row container-fluid">
+                <img src="../admin/image2.jpg" width="100%" alt="">
             </div>
             <div>
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Nhom 11 - CHO THUE PHUONG TIEN DI CHUYEN</title>
     <!-- Bootstrap core CSS-->
     <link href="<?php echo base_url() ?>public/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -22,7 +22,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">TRANG QUAN LY WEBSITE</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,7 +30,7 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item <?php echo isset($open) && $open == 'category' ? 'active' : '' ?>">
                 <a class="nav-link" href=" <?php echo modules("category")?>" >
-                    <i class="fa fa-fw fa-dashboard"></i>
+                    <i class="fa fa-fw fa-list-ul"></i>
                     <span class="nav-link-text">Danh sach cac loai xe</span>
                 </a>
             </li>
@@ -38,6 +38,12 @@
                 <a class="nav-link" href=" <?php echo modules("vehicle")?>" >
                     <i class="fa fa-fw fa-motorcycle"></i>
                     <span class="nav-link-text">Danh sach cac xe</span>
+                </a>
+            </li>
+            <li class="nav-item <?php echo isset($open) && $open == 'admin' ? 'admin' : '' ?>">
+                <a class="nav-link" href=" <?php echo modules("admin")?>" >
+                    <i class="fa faw fa-address-card"></i>
+                    <span class="nav-link-text">Quan ly admins</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">

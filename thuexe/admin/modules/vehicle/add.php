@@ -55,7 +55,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             $file_tmp   = $_FILES['hinhanh']['tmp_name'];
             $file_type  = $_FILES['hinhanh']['type'];
             $file_error = $_FILES['hinhanh']['error'];
-
             if($file_error == 0)
             {
                 $part = ROOT ."xe/";
@@ -89,7 +88,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
                 <a href="#">Danh sach cac xe</a>

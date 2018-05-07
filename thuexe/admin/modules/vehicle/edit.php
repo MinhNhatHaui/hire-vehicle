@@ -3,7 +3,7 @@ $open = 'vehicle';
 require_once __DIR__ . "/../../autoload/autoload.php";
 $loaixe = $db->fetchAll('loai');
 $maxe = intval(getInput('maxe'));
-$EditVehicle = $db->fetchIDXe("xe", $maxe);
+$EditVehicle = $db->fetchID("xe",'maxe', $maxe);
 if (empty($EditVehicle)) {
     $_SESSION['error'] = "Du lieu xe khong ton tai";
     redirectAdmin('vehicle');
@@ -31,10 +31,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if (empty($error)) {
+        if(isset($_FILES['hinhanh']))
+        {
+            $file_name  = $_FILES['hinhanh']['name'];
+            $file_tmp   = $_FILES['hinhanh']['tmp_name'];
+            $file_type  = $_FILES['hinhanh']['type'];
+            $file_error = $_FILES['hinhanh']['error'];
 
+            if($file_error == 0)
+            {
+                $part = ROOT . "xe/";
+                $data['hinhanh'] = $file_name;
+            }
+        }
             $maxe_update = $db->update('xe', $data, array("maxe" => $maxe));
             // dua vao ma xe ma ta co the cap nhat duoc toan bo du lieu
             if ($maxe_update > 0) {
+                move_uploaded_file($file_tmp,$part.$file_name);
                 $_SESSION['success'] = "Cap nhat thanh cong";
                 redirectAdmin("vehicle");
             } else {
@@ -55,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
                 <a href="#">Danh sach cac xe</a>
@@ -71,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class=" container-fluid">
         <div>
             <!--                action ko de gi se duoc xu ly tren trang dau-->
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <form>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Loai xe</label>

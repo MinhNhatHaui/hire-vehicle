@@ -16,6 +16,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
     //ham xu ly loi khi chua nhap ten loai xe
     //thieu khi chua nhap ma loai xe, bo sung sau
+    if(postInput('maloai') == '')
+    {
+        $error['maloai'] = "Ban chua nhap ma loai xe ";
+    }
     if(postInput('tenloaixe') == '')
     {
         $error['tenloaixe'] = "Ban chua nhap ten loai xe ";
@@ -59,10 +63,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#">Dashboard</a>
+                    <a href="../../index.php">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">Danh muc</a>
+                    <a href="../category/index.php">Danh muc</a>
                 </li>
                 <li class="breadcrumb-item active">
                     Them moi danh muc

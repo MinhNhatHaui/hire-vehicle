@@ -3,7 +3,7 @@ $open = 'category';
 require_once __DIR__. "/../../autoload/autoload.php";
 
 $maloai = intval(getInput('maloai'));
-$EditCategory =  $db->fetchIDLoaiXe("loai",$maloai);
+$EditCategory =  $db->fetchID("loai",'maloai',$maloai);
 //    var_dump($maloai);
 if(empty($EditCategory))
 {
@@ -11,7 +11,7 @@ if(empty($EditCategory))
     redirectAdmin("category");
 }
 
-$num = $db->deleteLoaiXe("loai", $maloai);
+$num = $db->delete("loai","maloai", $maloai);
 if($num > 0){
     $_SESSION['success'] = "Xoa thanh cong loai xe ";
     redirectAdmin("category");

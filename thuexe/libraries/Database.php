@@ -29,10 +29,10 @@ class Database
         }
         $values = substr($values, 0, -1);
         $sql .= " VALUES (" . $values . ')';
-        // _debug($sql);die;
+//        var_dump($sql);
         mysqli_query($this->link, $sql) or die("Lỗi  query  insert ----" .mysqli_error($this->link));
         return mysqli_insert_id($this->link);
-
+//tra ve id khi duoc them moi
     }
 
     public function update($table, array $data, array $conditions)
@@ -65,9 +65,8 @@ class Database
         $where = substr($where, 0, -5);
 
         $sql .= $set . $where;
-        // _debug($sql);die;
-
-        mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error());
+        var_dump($sql);
+        mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error($this->link));
 
         return mysqli_affected_rows($this->link);
     }
@@ -139,35 +138,20 @@ class Database
         return $num;
     }
 
-    public function fetchIDLoaiXe($table, $id){
-        $sql = "SELECT * FROM {$table} WHERE maloai = $id";
-        $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchIDLoaiXe: " .mysqli_error($this->link));
-        return mysqli_fetch_assoc($result);
-    }
-    public function fetchIDXe($table, $id){
-        $sql = "SELECT * FROM {$table} WHERE maxe = $id";
-        $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchIDLoaiXe: " .mysqli_error($this->link));
+    public function fetchID($table,$col, $id){
+        $sql = "SELECT * FROM {$table} WHERE $col = $id";
+        $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchID: " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
 
-
-
-    //Xoa loai xe
-    public function deleteLoaiXe($table, $id)
+    public function delete($table,$col,$id)
     {
-        $sql = "DELETE FROM {$table} WHERE maloai = $id";
+        $sql = "DELETE FROM {$table} WHERE ". $col." = $id";
         mysqli_query($this->link, $sql) or die (" Loi truy van deleteLoaiXe: " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
-
     }
-    //Xoa xe
-    public function deleteXe($table, $id)
-    {
-        $sql = "DELETE FROM {$table} WHERE maxe = $id";
-        mysqli_query($this->link, $sql) or die (" Loi truy van deleteLoaiXe: " .mysqli_error($this->link));
-        return mysqli_affected_rows($this->link);
 
-    }
+
 }
 
 ?>

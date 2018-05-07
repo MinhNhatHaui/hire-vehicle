@@ -3,7 +3,8 @@ $open = 'category';
 require_once __DIR__ . "/../../autoload/autoload.php";
 
 $maloai = intval(getInput('maloai'));
-$EditCategory = $db->fetchIDLoaiXe("loai", $maloai);
+$EditCategory = $db->fetchID("loai",'maloai' ,$maloai);
+
 if (empty($EditCategory)) {
     $_SESSION['error'] = "Du lieu khong ton tai ";
     redirectAdmin("category");
@@ -18,8 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ];
     $error = [];
 
-    if (postInput('maloai') == '' && postInput('tenloaixe') == '') {
-        $error['maloai'] = " Ma loai khong duoc de trong ";
+    if (postInput('maloai') == '' ){
+    $error['maloai'] = " Ma loai khong duoc de trong ";
+    }
+
+    if (postInput('tenloaixe') == '' ){
         $error['tenloaixe'] = "Ten loai xe khong duoc de trong";
     }
 
@@ -61,13 +65,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
+                <a href="../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#">Danh muc</a>
+                <a href="../category/index.php">Danh muc</a>
             </li>
             <li class="breadcrumb-item active">
-                Them moi danh muc
+                Cap nhat danh muc
             </li>
         </ol>
         <div class="clearfix"></div>

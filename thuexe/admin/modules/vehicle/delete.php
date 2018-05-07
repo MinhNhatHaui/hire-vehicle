@@ -3,15 +3,14 @@ $open = 'vehicle';
 require_once __DIR__. "/../../autoload/autoload.php";
 
 $maxe = intval(getInput('maxe'));
-$EditVehicle =  $db->fetchIDXe("xe",$maxe);
-var_dump($EditVehicle);
+$EditVehicle =  $db->fetchID("xe",'maxe',$maxe);
 if(empty($EditVehicle))
 {
     $_SESSION['error'] = "Du lieu khong ton tai ";
     redirectAdmin("vehicle");
 }
 
-$num = $db->deleteXe("xe", $maxe);
+$num = $db->delete("xe", 'maxe', $maxe);
 if($num > 0){
     $_SESSION['success'] = "Xoa thanh cong loai xe ";
     redirectAdmin("vehicle");
