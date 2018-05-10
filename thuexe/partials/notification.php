@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <?php if(isset($_SESSION['error'])) :?>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger text-center">
         <?php echo $_SESSION['error'];
         unset($_SESSION['error']); // huy session
         ?>

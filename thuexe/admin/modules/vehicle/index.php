@@ -8,7 +8,7 @@ if (isset($_GET['page'])) {
     $p = 1;
 }
 // cac xe khong co thuoc loai xe nao cung se duoc in ra
-$sql = "SELECT xe.*, loai.maloai as namecate FROM xe left join loai on loai.maloai = xe.maloai";
+$sql = "SELECT xe.*, loai.tenloaixe as namecate FROM xe left join loai on loai.maloai = xe.maloai";
 $xe = $db->fetchJone('xe', $sql, $p, 3, true);
 
 if (isset($xe['page'])) {
@@ -45,13 +45,11 @@ if (isset($xe['page'])) {
                         <th scope="col">Ten xe</th>
                         <th scope="col">Hinh anh</th>
                         <th scope="col">So luong</th>
-                        <th scope="col">Slug</th>
+                        <th scope="col">Gia</th>
                         <th scope="col">Status</th>
                         <th scope="col">Dung tich xang</th>
                         <th scope="col">Dong co</th>
                         <th scope="col">Cong suat</th>
-                        <th scope="col">Ty so nen</th>
-                        <th scope="col">He thong khoi dong</th>
                         <th scope="col">Duoc tao luc</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -61,7 +59,7 @@ if (isset($xe['page'])) {
                     foreach ($xe as $item): ?>
                         <tr>
                             <td><?php echo $stt ?></td>
-                            <td><?php echo $item['maloai'] ?></td>
+                            <td><?php echo $item['namecate'] ?></td>
                             <td><?php echo $item['maxe'] ?></td>
                             <td><?php echo $item['tenxe'] ?></td>
                             <td>
@@ -69,13 +67,11 @@ if (isset($xe['page'])) {
                                      height="80px" alt="">
                             </td>
                             <td><?php echo $item['soluong'] ?></td>
-                            <td><?php echo $item['slug'] ?></td>
+                            <td><?php echo $item['gia'] ?></td>
                             <td><?php echo $item['status'] ?></td>
                             <td><?php echo $item['dung_tich_xang'] ?></td>
                             <td><?php echo $item['dong_co'] ?></td>
                             <td><?php echo $item['cong_suat'] ?></td>
-                            <td><?php echo $item['ty_so_nen'] ?></td>
-                            <td><?php echo $item['he_thong_kd'] ?></td>
                             <td><?php echo $item['tao_luc'] ?></td>
                             <td>
                                 <a href="edit.php?maxe=<?php echo $item['maxe'] ?>" class="btn btn-xs mb-1 btn-warning"><i

@@ -8,38 +8,28 @@ require_once __DIR__. "/../../autoload/autoload.php";
      */
     $loai = $db->fetchAll("loai");
 
-
-
-if($_SERVER['REQUEST_METHOD'] == "POST")
-{
-
     $data = [
         "maloai" => postInput('maloai'),
         "maxe" => postInput('maxe'),
         "tenxe" => postInput('tenxe'),
         "slug" => to_slug(postInput('tenxe')),
         "soluong" => postInput('soluong'),
+        "gia" => postInput('gia'),
         "hinhanh" => postInput('hinhanh'),
         "status" => postInput('status'),
         "dong_co" => postInput('dong_co'),
         "cong_suat" => postInput('cong_suat'),
-        "ty_so_nen" => postInput('ty_so_nen'),
-        "he_thong_kd" => postInput('he_thong_kd'),
         "dung_tich_xang" => postInput('dung_tich_xang'),
     ];
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+
+
 
     $error = [];
 
     //ham xu ly loi khi chua nhap ten loai xe
     //thieu khi chua nhap ma loai xe, bo sung sau
-
-
-    /* if(postInput('maloai') == '')
-    {
-        $error['maloai'] = "Ban chua nhap ten loai xe ";
-    }*/
-
-
     //kiem  tra hinh anh
     /*if(!isset($_FILES['hinhanh']))
     {
@@ -59,19 +49,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
             {
                 $part = ROOT ."xe/";
                 $data['hinhanh'] = $file_name;
+                $imageFileType = strtolower(pathinfo($part.$file_name,PATHINFO_EXTENSION));
+
+            }
+
+        }
+
+        if($imageFileType != "jpg" && $imageFileType != "png"
+            && $imageFileType != "jpeg" && $imageFileType != "gif" )
+            {
+                $error['hinhanh'] = "Hinh anh khong dung dinh dang. Chi chap nhan dinh dang: .jpg, .png, .jpeg, .gif";
+            }
+        else
+            {
+                $id_insert = $db->insert("xe",$data);
+            if($id_insert)
+            {
+                move_uploaded_file($file_tmp, $part.$file_name);
+                $_SESSION['success'] = 'Them xe thanh cong';
+//              redirectAdmin('vehicle');
+            }
+            else{
+                $_SESSION['error'] = 'Them xe that bai';
             }
         }
 
-        $id_insert = $db->insert("xe",$data);
-        if($id_insert)
-        {
-            move_uploaded_file($file_tmp, $part.$file_name);
-            $_SESSION['success'] = 'Them xe thanh cong';
-            redirectAdmin('vehicle');
-        }
-        else{
-            $_SESSION['error'] = 'Them xe that bai';
-        }
 
     }
 
@@ -108,7 +110,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <form>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ten loai xe</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <select class="form-control" required name="maloai" id="">
                                 <option value="" >- Chon loai xe -</option>
                                 <?php foreach ($loai as $item): ?>
@@ -122,17 +124,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                             <?php endif ?>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ma xe</label>
-                        <div class="col-sm-4">
-                            <input type="text" required class="form-control" id="inputEmail3"  name="maxe">
+                        <div class="col-sm-3">
+                            <input type="text" required class="form-control" id="inputEmail3"
+                                   value="<?php echo $data['maxe'] ?>" name="maxe">
                             <?php if(isset($error['maxe'])): ?>
                                 <p class="text-danger"> <?php echo $error['maxe'] ?> </p>
                             <?php endif ?>
                         </div>
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ten xe</label>
-                        <div class="col-sm-4">
-                            <input type="text" required class="form-control" id="inputEmail3"  name="tenxe">
+                        <div class="col-sm-3">
+                            <input type="text" required class="form-control" id="inputEmail3"
+                                   value="<?php echo postInput('tenxe')?>" name="tenxe">
                             <?php if(isset($error['tenxe'])): ?>
                                 <p class="text-danger"> <?php echo $error['tenxe'] ?> </p>
                             <?php endif ?>
@@ -144,25 +149,33 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                         <div class="col-sm-3">
                             <input type="file" required id="inputEmail3"  name="hinhanh">
                             <?php if(isset($error['hinhanh'])): ?>
-                                <p class="text-danger"> <?php echo $error['hinhanh'] ?> </p>
-                            <?php endif ?>
+                                <p class="text-danger"> <?php echo $error['hinhanh'] ?></p>
+                            <?php endif; ?>
                         </div>
 
                     </div>
                     <div class="form-group row">
-
                         <label for="inputEmail3" class="col-sm-2 col-form-label">So luong</label>
                         <div class="col-sm-3">
-                            <input type="number" required class="form-control" id="inputEmail3"  name="soluong" value="0">
+                            <input type="number" required class="form-control" id="inputEmail3"  name="soluong"
+                                   value="<?php echo postInput('soluong')?>">
                             <?php if(isset($error['soluong'])): ?>
                                 <p class="text-danger"> <?php echo $error['soluong'] ?> </p>
                             <?php endif ?>
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Gia</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="inputEmail3"  name="gia"
+                                   value="<?php echo postInput('gia')?>" placeholder="2.000.000">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Trang thai</label>
                         <div class="col-sm-3">
-                            <input type="text" required class="form-control" id="inputEmail3"  name="status">
+                            <input type="text" required class="form-control" id="inputEmail3"
+                                   value="<?php echo postInput('status')?>"  name="status">
                             <?php if(isset($error['status'])): ?>
                                 <p class="text-danger"> <?php echo $error['status'] ?> </p>
                             <?php endif ?>
@@ -171,43 +184,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Dong co</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3"  name="dong_co">
+                            <input type="text" class="form-control" id="inputEmail3"
+                                   value="<?php echo postInput('dong_co')?>" name="dong_co">
                             <?php if(isset($error['dong_co'])): ?>
                                 <p class="text-danger"> <?php echo $error['dong_co'] ?> </p>
                             <?php endif ?>
                         </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Cong suat</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3"  name="cong_suat">
+                            <input type="text" class="form-control" id="inputEmail3"
+                                   value="<?php echo postInput('cong_suat')?>" name="cong_suat">
                             <?php if(isset($error['cong_suat'])): ?>
                                 <p class="text-danger"> <?php echo $error['cong_suat'] ?> </p>
                             <?php endif ?>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Ty so nen</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3"  name="ty_so_nen">
-                            <?php if(isset($error['ty_so_nen'])): ?>
-                                <p class="text-danger"> <?php echo $error['ty_so_nen'] ?> </p>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">He thong khoi dong</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3"  name="he_thong_kd">
-                            <?php if(isset($error['he_thong_kd'])): ?>
-                                <p class="text-danger"> <?php echo $error['he_thong_kd'] ?> </p>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Dung tich xang</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3"  name="dung_tich_xang">
+                            <input type="text" class="form-control" id="inputEmail3"
+                                   value="<?php echo postInput('dung_tich_xang')?>" name="dung_tich_xang">
                             <?php if(isset($error['dung_tich_xang'])): ?>
                                 <p class="text-danger"> <?php echo $error['dung_tich_xang'] ?> </p>
                             <?php endif ?>

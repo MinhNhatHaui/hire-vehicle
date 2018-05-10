@@ -1,0 +1,189 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body
+{
+	background-color: #eaeae1;
+}
+.container-fluid
+{
+	padding-left: 40px;
+
+}
+#left
+{
+	border: 1px solid grey;
+}
+.navbar-nav >li
+{
+	position: relative;
+	padding-right: 60px;
+
+}
+.navbar-nav li a
+{
+	font-weight: bold;
+
+}
+.dropdown-menu{
+	display: none;
+	position: absolute;
+
+}
+
+.navbar-nav li:hover .dropdown-menu{
+	display:block;
+	background-color: #d6d6c2;
+}
+.navbar-default
+{
+	padding: 0px;
+	margin: 0px;
+	background-color: #49352b;
+}
+#slide
+{
+	padding-top: 20px;
+}
+.navbar-default ul li a
+{
+	font-size: 20px;
+}
+.trai
+{
+	font-weight: bold;
+	border:1px grey solid;
+	border-radius: 6px;
+	padding-right: 40px;
+}
+.content
+{
+	padding-top: 20px;
+}
+.info
+{
+	font-weight: bold;
+	font-size: 20px;
+	padding-left: 10px;
+}
+.trai
+{
+	background-color: white;
+
+}
+.news
+{
+	margin: 10px 10px;
+}
+#trai
+{
+	margin-top: -20px;
+}
+
+#fanpage
+{
+	border:1px grey solid;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	background-color: white;
+	width: 290px;
+	float: right;
+
+}
+#fb
+{
+	text-align: center;
+}
+#xemnhieu
+{
+	border:1px grey solid;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	background-color: white;
+	width: 290px;
+	float: right;
+	text-align: center;
+
+}
+#hot
+{
+	text-align: center;
+}
+#goctuvan
+{
+	border:1px grey solid;
+	border-radius: 6px;
+	color: black;
+	font-size: 2px;
+	margin-bottom: 10px;
+	background-color: white;
+	width: 290px;
+	float: right;
+
+}
+#tuvan
+{
+	text-align: center;
+}
+#hotro
+{
+	border:1px grey solid;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	text-align: center;
+	background-color: white;
+	width: 290px;
+	float: right;
+
+}
+#gioithieu
+{
+	font-size: 20px;
+}
+#gioithieu >h2
+{
+	border-bottom: 3px solid orange;
+
+}
+#hopdong >h2
+{
+	border-bottom: 3px solid orange;
+
+}
+#kinhnghiem >h2
+{
+	border-bottom: 3px solid orange;
+
+}
+#lienhe
+{
+	padding: 20px 20px;
+}
+#lienhe >h2
+{
+	border-bottom: 3px solid orange;
+
+}
+#map
+{
+	border: 1px orange solid;
+}
+#ht
+{
+	text-align: center;
+}
+footer
+{
+	text-align: center;
+	background-color: #d6d6c2;
+	height: 100px;
+	margin-top: 10px;
+}
+/*Custom css*/
+.a-header{
+	color: #fcd445;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	color: #ea2323;
+}

@@ -18,12 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         "tenxe" => postInput('tenxe'),
         "slug" => to_slug(postInput('tenxe')),
         "soluong" => postInput('soluong'),
+        "gia" => postInput('gia'),
         "hinhanh" => postInput('hinhanh'),
         "status" => postInput('status'),
         "dong_co" => postInput('dong_co'),
         "cong_suat" => postInput('cong_suat'),
-        "ty_so_nen" => postInput('ty_so_nen'),
-        "he_thong_kd" => postInput('he_thong_kd'),
         "dung_tich_xang" => postInput('dung_tich_xang'),
     ];
 
@@ -88,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <form>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Loai xe</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <select class="form-control" name="maloai" id="">
                                 <?php foreach ($loaixe as $item): ?>
                                     <option value="<?php echo $item['maloai'] ?>"
@@ -104,14 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ma xe</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <input type="text" required class="form-control" id="inputEmail3" name="maxe" value="<?php echo $EditVehicle['maxe'] ?>">
                             <?php if (isset($error['maxe'])): ?>
                                 <p class="text-danger"> <?php echo $error['maxe'] ?> </p>
                             <?php endif ?>
                         </div>
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ten xe</label>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <input type="text" required class="form-control" id="inputEmail3" name="tenxe" value="<?php echo $EditVehicle['tenxe'] ; ?>">
                             <?php if (isset($error['tenxe'])): ?>
                                 <p class="text-danger"> <?php echo $error['tenxe'] ?> </p>
@@ -122,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Hinh anh</label>
                         <div class="col-sm-3">
-                            <input type="file" id="inputEmail3" name="hinhanh">
+                            <input type="file" id="inputEmail3" name="hinhanh" class="mb-2">
                             <?php if (isset($error['hinhanh'])): ?>
                                 <p class="text-danger"> <?php echo $error['hinhanh'] ?> </p>
                             <?php endif ?>
@@ -131,7 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                     </div>
                     <div class="form-group row">
-
                         <label for="inputEmail3" class="col-sm-2 col-form-label">So luong</label>
                         <div class="col-sm-3">
                             <input type="number" required class="form-control" id="inputEmail3" name="soluong"
@@ -139,6 +137,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <?php if (isset($error['soluong'])): ?>
                                 <p class="text-danger"> <?php echo $error['soluong'] ?> </p>
                             <?php endif ?>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Gia</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="inputEmail3"  name="gia"
+                                   value="<?php echo $EditVehicle['gia'] ?>">
+                            <?php if(isset($error['gia'])): ?>
+                               <p class="text-danger"><?php echo $error['gia'] ?></p>
+                            <?php endif;?>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -158,31 +166,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 <p class="text-danger"> <?php echo $error['dong_co'] ?> </p>
                             <?php endif ?>
                         </div>
-                    </div>
-                    <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Cong suat</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="inputEmail3" value="<?php echo $EditVehicle['cong_suat']; ?>"  name="cong_suat">
                             <?php if (isset($error['cong_suat'])): ?>
                                 <p class="text-danger"> <?php echo $error['cong_suat'] ?> </p>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Ty so nen</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3" value="<?php echo $EditVehicle['ty_so_nen']; ?>" name="ty_so_nen">
-                            <?php if (isset($error['ty_so_nen'])): ?>
-                                <p class="text-danger"> <?php echo $error['ty_so_nen'] ?> </p>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">He thong khoi dong</label>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputEmail3" value="<?php echo $EditVehicle['he_thong_kd']; ?>" name="he_thong_kd">
-                            <?php if (isset($error['he_thong_kd'])): ?>
-                                <p class="text-danger"> <?php echo $error['he_thong_kd'] ?> </p>
                             <?php endif ?>
                         </div>
                     </div>

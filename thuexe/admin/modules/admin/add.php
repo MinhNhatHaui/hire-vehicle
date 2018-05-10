@@ -42,17 +42,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 {
                     $part = ROOT . "admins/";
                     $data['hinhanh'] = $file_name;
+                    $imageFileType = strtolower(pathinfo($part.$file_name,PATHINFO_EXTENSION));
                 }
             }
-                $id_insert = $db->insert("quantrivien", $data);
 
-            if($id_insert){
-                    move_uploaded_file($file_tmp,$part.$file_name);
-                    $_SESSION['success'] = "Them moi admin thanh cong";
-//                    redirectAdmin("admin");
-                }else{
-                    $_SESSION['error'] = "Admin moi chua duoc them";
+            if($imageFileType != "jpg" && $imageFileType != "png"
+                && $imageFileType != "jpeg" && $imageFileType != "gif" )
+                {
+                    $error['hinhanh'] = "Hinh anh khong dung dinh dang. Chi chap nhan dinh dang: .jpg, .png, .jpeg, .gif";
                 }
+            else
+                {
+                    $id_insert = $db->insert("quantrivien", $data);
+                    if($id_insert)
+                        {
+                            move_uploaded_file($file_tmp,$part.$file_name);
+                            $_SESSION['success'] = "Them moi admin thanh cong";
+    //                      redirectAdmin("admin");
+                        }
+                    else
+                        {
+                            $_SESSION['error'] = "Admin moi chua duoc them";
+                        }
+                }
+
+
             }
         }
     ?>

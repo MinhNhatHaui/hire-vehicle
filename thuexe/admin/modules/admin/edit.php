@@ -12,7 +12,7 @@ if(empty($EditAdmin)){
 }
 $data = [
     "name" => postInput('name'),
-    "password" => postInput('password'),
+    "password" => md5(postInput('password')),
     "hinhanh" => postInput('hinhanh'),
     "phone" => postInput('phone'),
     "gioitinh" => postInput('gioitinh'),
@@ -29,12 +29,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
     if($data['password'] != md5(postInput('re_password')))
     {
-        $erro['password'] = "Mat khau khong khop";
+        $error['password'] = "Mat khau khong khop";
     }
-    if(isset($data['socmnd'])){
+
+
+    if((postInput('socmnd')) != $EditAdmin['socmnd']){
         $checkExist = $db->fetchOne('quantrivien', " socmnd = '".$data['socmnd']."'");
         if($checkExist != NULL ){
-            $error['socmnd'] = "Admin co so CMND nay da ton tai hoac ban chua thay doi CMND";
+            $error['socmnd'] = "Admin co so CMND nay da ton tai";
         }
     }
 
@@ -55,6 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 $data['hinhanh'] = $file_name;
             }
         }
+
         $id_update = $db->update('quantrivien',$data,array("id" => $idAdmin));
         var_dump($id_update);
         if($id_update > 0){

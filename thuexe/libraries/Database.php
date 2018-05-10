@@ -65,7 +65,6 @@ class Database
         $where = substr($where, 0, -5);
 
         $sql .= $set . $where;
-        var_dump($sql);
         mysqli_query($this->link, $sql) or die( "Lỗi truy vấn Update -- " .mysqli_error($this->link));
 
         return mysqli_affected_rows($this->link);
@@ -92,7 +91,6 @@ class Database
         $sql = "SELECT * FROM {$table} WHERE ";
         $sql .= $query;
         $sql .= "LIMIT 1";
-//        var_dump($sql);
         $result = mysqli_query($this->link,$sql)
             or die ("Loi truy van fetchOne " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
