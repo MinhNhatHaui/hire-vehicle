@@ -31,9 +31,9 @@
                 <li>
                     <a class="a-header" href="<?php echo base_url()?>bao-gia.php">Báo giá <i class="fas fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
-                        <?php foreach ($ds_loaixe as $item): ?>
-                        <li><a class="a-header" href="#"><?php echo $item['tenloaixe']?></a></li>
-                        <?php endforeach;?>
+                        <li><a class="a-header" href="<?php echo base_url()?>xe-may.php">Xe máy</a></li>
+                        <li><a class="a-header" href="<?php echo base_url()?>xe-dap-dien.php">Xe đạp điện</a></li>
+                        <li><a class="a-header" href="<?php echo base_url()?>xe-dap.php">Xe đạp</a></li>
                     </ul>
                 </li>
                 <li>

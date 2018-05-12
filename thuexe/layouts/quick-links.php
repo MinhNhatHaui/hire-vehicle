@@ -9,7 +9,7 @@
         <div id="hot">
             <h4 style="border-bottom:3px double orange;"><i class="fas fa-motorcycle"></i>Xem nhiều nhất</h4>
         </div>
-        <h4><a href="#">Báo giá</a></h4>
+        <h4><a href="<?php echo base_url()?>bao-gia.php">Báo giá</a></h4>
         <hr>
         <h4><a href="kinhnghiem.html">Kinh nghiệm</a></h4>
         <hr>

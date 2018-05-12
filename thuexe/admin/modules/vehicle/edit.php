@@ -42,8 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $part = ROOT . "xe/";
                 $data['hinhanh'] = $file_name;
             }
+        }/*else{
+            $part = ROOT . "xe/";
+            $data['hinhanh'] = $EditVehicle['hinhanh'];
+        }*/
+        if($data['soluong'] == 0 )
+        {
+            $data['status'] = 0;
         }
-            $maxe_update = $db->update('xe', $data, array("maxe" => $maxe));
+        $maxe_update = $db->update('xe', $data, array("maxe" => $maxe));
             // dua vao ma xe ma ta co the cap nhat duoc toan bo du lieu
             if ($maxe_update > 0) {
                 move_uploaded_file($file_tmp,$part.$file_name);
@@ -55,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
 
     }
-
+var_dump($data['hinhanh']);
 
 }
 ?>

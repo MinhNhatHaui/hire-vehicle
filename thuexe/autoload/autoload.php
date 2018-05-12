@@ -8,6 +8,17 @@
 
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] ."/public/uploads/");
 
-    $ds_loaixe = $db->fetchAll("loai");
     $ds_xe = $db->fetchAll("xe");
+
+
+    //Loc xe
+    $getXeMay = "SELECT * FROM xe INNER JOIN loai WHERE xe.maloai = loai.maloai AND tenloaixe = 'Xe máy'";
+    $listMoto = $db->fetchSql($getXeMay);
+
+    $getXeDapDien = "SELECT * FROM xe INNER JOIN loai WHERE xe.maloai = loai.maloai AND tenloaixe = 'Xe đạp điện'";
+    $listElecBike = $db->fetchSql($getXeDapDien);
+
+    $getXeDap = "SELECT * FROM xe INNER JOIN loai WHERE xe.maloai = loai.maloai AND tenloaixe = 'Xe đạp'";
+    $listBike = $db->fetchSql($getXeDap);
+
 ?>

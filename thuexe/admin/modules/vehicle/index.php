@@ -9,6 +9,7 @@ if (isset($_GET['page'])) {
 }
 // cac xe khong co thuoc loai xe nao cung se duoc in ra
 $sql = "SELECT xe.*, loai.tenloaixe as namecate FROM xe left join loai on loai.maloai = xe.maloai";
+
 $xe = $db->fetchJone('xe', $sql, $p, 3, true);
 
 if (isset($xe['page'])) {
@@ -68,7 +69,11 @@ if (isset($xe['page'])) {
                             </td>
                             <td><?php echo $item['soluong'] ?></td>
                             <td><?php echo $item['gia'] ?></td>
-                            <td><?php echo $item['status'] ?></td>
+                            <td>
+                                <a href="home.php?maxe=<?php echo $item['maxe']?>" class="btn btn-xs <?php echo $item['status'] == 1 ? 'btn-success' : 'btn-secondary'?>">
+                                    <?php echo $item['status'] == 1 ? 'Hiển thị' : 'Không' ?>
+                                </a>
+                            </td>
                             <td><?php echo $item['dung_tich_xang'] ?></td>
                             <td><?php echo $item['dong_co'] ?></td>
                             <td><?php echo $item['cong_suat'] ?></td>

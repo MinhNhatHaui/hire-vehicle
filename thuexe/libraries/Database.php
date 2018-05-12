@@ -86,6 +86,17 @@ class Database
             return $data;
     }
 
+    public function fetchSql($query){
+        $result = mysqli_query($this->link, $query) or die("Loi truy van fetchSql" . mysqli_error($this->link));
+        $data = [];
+        if($result){
+            while($num = mysqli_fetch_assoc($result)){
+                $data[] = $num;
+            }
+        }
+        return $data;
+    }
+
     public function fetchOne($table, $query)
     {
         $sql = "SELECT * FROM {$table} WHERE ";
