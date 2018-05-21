@@ -102,6 +102,7 @@ class Database
         $sql = "SELECT * FROM {$table} WHERE ";
         $sql .= $query;
         $sql .= "LIMIT 1";
+//        var_dump($sql);
         $result = mysqli_query($this->link,$sql)
             or die ("Loi truy van fetchOne " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
@@ -136,6 +137,36 @@ class Database
             }
         }
         // _debug($data);
+        return $data;
+    }
+
+    public  function fetchJones($table,$sql,$total = 1,$page,$row ,$pagi = true )
+    {
+
+        $data = [];
+
+        if ($pagi == true )
+        {
+            $sotrang = ceil($total / $row);
+            $start = ($page - 1 ) * $row ;
+            $sql .= " LIMIT $start,$row ";
+            $data = [ "page" => $sotrang];
+            $result = mysqli_query($this->link,$sql) or die("Lỗi truy vấn fetchJone ---- " .mysqli_error($this->link));
+//            var_dump($result);
+        }
+        else
+        {
+            $result = mysqli_query($this->link,$sql) or die("Lỗi truy vấn fetchJone ---- " .mysqli_error($this->link));
+        }
+
+        if( $result)
+        {
+            while ($num = mysqli_fetch_assoc($result))
+            {
+                $data[] = $num;
+            }
+        }
+
         return $data;
     }
 

@@ -19,11 +19,12 @@ foreach ($resSql as $item) {
         <div class="col-md-9 trai" style="padding-left: 60px;padding-bottom: 50px;">
             <div class="row">
                 <?php foreach ($data as $key => $value): ?>
-                    <div class="text-capitalize">
+                    <!--<div class="text-capitalize">
                         <h2 style="font-family: 'Abyssinica SIL';font-size: 40px;color: navy">
-                            <?php echo $key ?>
+                            <?php /*echo $key */?>
                         </h2>
-                    </div>
+                    </div>-->
+<!--                o day co the phan trang rieng cho tung muc-->
 
                     <?php foreach ($value as $item): ?>
                             <div class="card col-md-3" style="margin-bottom: 20px; border-top: 1px solid grey">

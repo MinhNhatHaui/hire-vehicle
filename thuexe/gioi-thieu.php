@@ -72,7 +72,7 @@
             <p>
             <p>
 
-                Hãy liên hệ ngay với chúng tôi – <a href="#">thuexetructuyen.com</a>  !
+                Hãy liên hệ ngay với chúng tôi – <a href="#">http://thuexe.haui.vn/</a>  !
             </p>
             <p>
                 Địa chỉ : Trường Đại Học Công Nghiệp Hà Nội - Bắc Từ Liêm - Nhổn .
