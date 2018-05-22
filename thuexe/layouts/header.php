@@ -27,9 +27,9 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav ">
                 <li><a class="a-header" href="<?php echo base_url()?>">Trang chủ <i class="fas fa-home"></i></a></li>
-                <li><a class="a-header" href="<?php echo base_url()?>gioi-thieu.php">Giới thiệu</a></li>
+                <li><a class="a-header" href="<?php echo base_url()?>gioi-thieu.php">Giới thiệu <i class="fas fa-info"></i></a></li>
                 <li>
-                    <a class="a-header" href="<?php echo base_url()?>bao-gia.php">Báo giá <i class="fas fa-angle-down"></i></a>
+                    <a class="a-header" href="<?php echo base_url()?>bao-gia.php">Báo giá <i class="fas fa-hand-holding-usd"></i></a>
                     <ul class="dropdown-menu">
                         <li><a class="a-header" href="<?php echo base_url()?>xe-may.php">Xe máy</a></li>
                         <li><a class="a-header" href="<?php echo base_url()?>xe-dap-dien.php">Xe đạp điện</a></li>
@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li><a class="a-header" href="">Liên hệ <i class="fas fa-phone-square"></i></a></li>
-                <li><a class="a-header" href="#">Hỗ trợ khách hàng <i class="fas fa-ambulance"></i></a></li>
+                <li><a class="a-header" href="#">Hỗ trợ <i class="fas fa-ambulance"></i></a></li>
             </ul>
         </div>
     </nav>

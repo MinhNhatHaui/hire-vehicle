@@ -28,7 +28,7 @@
                     </h4>
                     <br>
                     <div class="right">
-                        <a href="customer-form.php?ma-xe=<?php echo $maxe?>" id="accept" class="btn btn-info">THUE XE
+                        <a href="validate-form.php?maxe=<?php echo $maxe?>" id="accept" class="btn btn-info">THUE XE
                             <span>  </span>
                         </a>
                         <br />
