@@ -1,7 +1,9 @@
 <?php require_once __DIR__ . "/autoload/autoload.php"; ?>
 <?php
     $maxe = getInput('maxe');
-    $getXe = $db->fetchOne('xe'," maxe = $maxe ");
+//    var_dump($maxe);
+    $getXe = $db->fetchOne('xe',"maxe = $maxe");
+
 
     //Lay ra danh sach xe khac dua tren loai xe
     $sql = "SELECT maloai FROM xe WHERE maxe = $maxe";
@@ -9,23 +11,23 @@
     foreach ($resSql as $key) :
         $maloai = intval($key['maloai']);
     endforeach;
-    $xeKhac = "SELECT * FROM xe WHERE maloai = $maloai";
+    $xeKhac = "SELECT * FROM xe WHERE maloai = $maloai AND maxe <> $maxe";
     $resXeKhac = $db->fetchSql($xeKhac);
-?>
+
+    //Restriction for customer
+
+    ?>
 <?php require_once __DIR__ . "/layouts/header.php"; ?>
     <div class="row content">
         <div class="col-md-9 trai" style="padding-left: 60px;padding-bottom: 50px;">
             <div class=" row content">
-                <div class="col-md-4 ml-5 content">
-                    <img src="<?php base_url() ?>public/uploads/xe/<?php echo $getXe['hinhanh']?>"
-                         width="300px" height="250px" alt="">
+                <div class="col-md-4 content">
+                    <img src="<?php echo base_url() ?>public/uploads/xe/<?php echo $getXe['hinhanh']?>"
+                         width="250px" height="250px" alt="">
                 </div>
-                <div class="col-md-6 content">
+                <span class="col-md-8 content">
                     <h3 style="margin-top: -4px;">Cho thue xe <?php echo $getXe['tenxe']?></h3>
                     <h4 style="margin-top: -4px;" class="text-muted">Gia thue: <span class="text-warning text-capitalize"><?php echo number_format($getXe['gia'])?>  VND</span> </h4>
-                    <h4>So luong:
-                        <input type="number" style="width: 50px" placeholder="0" min="0" max="30">
-                    </h4>
                     <br>
                     <div class="right">
                         <a href="validate-form.php?maxe=<?php echo $maxe?>" id="accept" class="btn btn-info">THUE XE
@@ -33,39 +35,38 @@
                         </a>
                         <br />
                     </div>
-                </div>
+                </span>
             </div>
             <div class="row content ml-5">
-                <p>
-                    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Mo ta
-                    </button>
-                </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <table class="table table-striped">
-                            <tbody>
-                            <tr>
-                                <td>Dong co</td>
-                                <td><?php echo $getXe['dong_co']?></td>
-                            </tr>
-                            <tr>
-                                <td>Cong suat</td>
-                                <td><?php echo $getXe['cong_suat']?></td>
-                            </tr>
-                            <tr>
-                                <td>Dung tich xang</td>
-                                <td><?php echo $getXe['dung_tich_xang']?></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <?php if($maloai == 1):?>
+                <div>
+                    <p>
+                        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Mo ta
+                        </button><i class=" fas fa-hand-point-left fa-2x" style="margin-left: 10px; padding-top: 2px"></i>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>Dong co</td>
+                                    <td><?php echo $getXe['dong_co']?></td>
+                                </tr>
+                                <tr>
+                                    <td>Cong suat</td>
+                                    <td><?php echo $getXe['cong_suat']?></td>
+                                </tr>
+                                <tr>
+                                    <td>Dung tich xang</td>
+                                    <td><?php echo $getXe['dung_tich_xang']?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <p class="p1">Giá cho thuê xe máy chi tiết như sau:</p>
-                <p class="p1">Thuê theo tháng giá: 150,000đ/ngày</p>
-                <p class="p1">Thời gian thuê từ 1 đến 2 ngày giá: 300,000đ/ngày</p>
-                <p class="p1">thời gian thuê từ 3 đến dưới 30 ngày giá: 350,000đ/ngày</p>
-                <p class="p2"> </p>
+                <?php endif;?>
                 <p class="p1">Thủ tục cần 1 trong những giấy tờ sau: Chứng minh nhân dân, Hộ chiếu, Passport, Hộ khẩu, bằng lái xe hoặc giấy tờ tuỳ thân có hình khác.</p>
                 <p class="p1">Tiền thế chân từ:  40,000,000đ(tuỳ từng trường hợp cụ thể cty sẽ có chính sách cho từng người)</p>
                 <p class="p1">Khách phải thanh toán tiền thuê xe và tiền thế chân trước, khi nào trả xe sẽ trả lại tiền thế chân.</p>

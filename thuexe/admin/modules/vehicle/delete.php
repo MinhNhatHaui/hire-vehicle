@@ -14,11 +14,12 @@ $num = $db->delete("xe", 'maxe', $maxe);
 if($num > 0){
     $_SESSION['success'] = "Xoa thanh cong loai xe ";
     redirectAdmin("vehicle");
-}else{
+}
+/*else{
     $_SESSION['error'] = "Loai xe nay chua duoc xoa";
     redirectAdmin("vehicle");
 
-}
+}*/
 
 ?>
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>

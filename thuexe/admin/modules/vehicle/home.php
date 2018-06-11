@@ -22,9 +22,9 @@
     $update = $db->update('xe',array('status' => $display),array('maxe'=>$maxe));
 
     if($update > 0){
-        $_SESSION['success'] = "Cap nhat hien thi san pham duoc thuc hien";
+        $_SESSION['success'] = "Cap nhat hien thi xe duoc thuc hien";
         redirectAdmin('vehicle');
     }else{
-        $_SESSION['error'] = "Du lieu hien thi san pham chua duoc cap nhat";
+        $_SESSION['error'] = "Du lieu hien thi xe chua duoc cap nhat";
     }
 ?>

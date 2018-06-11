@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteRule "gioi-thieu.html" "gioi-thieu.php"
+RewriteRule "bao-gia.html" "bao-gia.php"
+RewriteRule "thue-xe.html" "gioi-thieu.php"
+RewriteRule "hop-dong.html" "hop-dong.php"
+RewriteRule "kinh-nghiem.html" "kinh-nghiem.php"
+RewriteRule "lien-he.html" "lien-he.php"
+RewriteRule "ho-tro.html" "ho-tro.php"
+RewriteRule "xe-may.html" "xe-may.php"
+RewriteRule "xe-dap-dien.html" "xe-dap-dien.php"
+RewriteRule "xe-dap.html" "xe-dap.php"
+RewriteRule "^(.*)/(.*).html$" "chi-tiet-xe.php?maxe=$1&slug=$2"

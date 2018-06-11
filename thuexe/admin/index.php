@@ -4,7 +4,7 @@
 
 ?>
 <?php require_once __DIR__. "/layouts/header.php"; ?>
-
+`
     <div class="content-wrapper">
         <div class="container-fluid">
             <h3>Chào mừng đến với trang quản trị Admin</h3>

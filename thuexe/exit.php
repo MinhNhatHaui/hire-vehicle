@@ -10,7 +10,7 @@
     unset($_SESSION['id_admin']);
 
     echo "<script>
-            location.href='dang-nhap.php';
+            location.href='/admin/dang-nhap.php';
         </script>";
 
 

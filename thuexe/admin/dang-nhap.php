@@ -12,7 +12,7 @@
     <!------ Include the above in your HEAD tag ---------->
 </head>
 <?php
-require_once __DIR__. "/autoload/autoload.php";
+require_once __DIR__ . "/autoload/autoload.php";
 $data =
     [
         'name' => postInput('name'),

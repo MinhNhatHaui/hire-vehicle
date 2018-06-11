@@ -7,28 +7,19 @@
        </div> -->
     <div id="xemnhieu" >
         <div id="hot">
-            <h4 style="border-bottom:3px double orange;"><i class="fas fa-eye"></i> Xem nhiều nhất</h4>
+            <h4 style="border-bottom:3px double orange;"> Xem nhiều nhất</h4>
         </div>
-        <h4><a href="<?php echo base_url()?>bao-gia.php">Báo giá</a></h4>
-        <hr>
-        <h4><a href="kinhnghiem.html">Kinh nghiệm</a></h4>
-        <hr>
-        <h4><a href="hopdong.html">Hợp đồng</a></h4>
-        <hr>
-        <h4><a href="<?php echo base_url()?>gioi-thieu.php">Giới thiệu</a></h4>
-        <hr>
-        <h4><a href="lienhe.html">Liên hệ</a></h4>
-        <hr>
-        <h4><a href="hopdong.html">Hợp đồng</a></h4>
-        <hr>
-    </div>
-    <div id="goctuvan" >
-        <div id="tuvan">
-            <h4 style="border-bottom:3px double orange;"><i class="fas fa-question-circle"></i> Góc tư vấn</h4>
+        <div style="padding-left: 10px">
+            <h4><a href="<?php echo base_url()?>bao-gia.php"><i class="fas fa-hand-holding-usd"></i> Báo giá</a></h4>
+            <hr>
+            <h4><a href="kinh-nghiem.php"><i class="fas fa-star"></i> Kinh nghiệm</a></h4>
+            <hr>
+            <h4><a href="hop-dong.php"><i class="fas fa-paperclip"></i> Hợp đồng</a></h4>
+            <hr>
+            <h4><a href="<?php echo base_url()?>gioi-thieu.php"><i class="far fa-address-card"></i> Giới thiệu</a></h4>
+            <hr>
+            <h4><a href="lien-he.php"><i class="fas fa-phone-volume"></i> Liên hệ</a></h4>
         </div>
-        <h4 class="container-fluid"><a href="#">Dịch vụ cho thuê xe đạp,xe đạp điện,xe máy</a></h4>
-        <hr style="border-bottom: 1px grey solid" />
-        <h4 class="container-fluid"><a href="#">Hợp đồng cho thuê xe máy tại Hà Nội</a></h4>
     </div>
     <div id="hotro" >
         <div id="ht">

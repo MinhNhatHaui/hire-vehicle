@@ -103,7 +103,6 @@ body
 	background-color: white;
 	width: 290px;
 	float: right;
-	text-align: center;
 
 }
 #hot
@@ -200,12 +199,12 @@ footer
 	color: darkblue;
 	opacity: 0;
 	position: relative;
-	transition: 0.5s;
+	transition: 0.25s;
 }
 #accept:hover span{
 	color: #202326;
 	opacity: 1;
-	transition: 0.5s;
+	transition: 0.35s;
 	padding-right: 20px;
 }
 
@@ -215,5 +214,5 @@ footer
 	content: '\2192';
 	position: absolute;
 	right: -20px;
-	transition: 0.5s;
+	transition: 0.35s;
 }
