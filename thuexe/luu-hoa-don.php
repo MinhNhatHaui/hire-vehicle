@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/autoload/autoload.php"; ?>
+<?php require_once __DIR__ . "/autoload/autoload.php";var_dump($_SESSION['saved-data'])?>
 <?php if(!isset($_SESSION['cart']))
     {
         echo "<script>
@@ -56,6 +56,7 @@
                     $user_id = $db->insert("users",$data);
                     if($user_id > 0){
                         $_SESSION['ok'] = 'Da luu thong tin';
+                        $_SESSION['saved-data'] = $data;
                     }
                 }
             }
@@ -92,27 +93,27 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Ho va ten</label>
                             <div class="col-sm-4">
-                                <input type="text"  class="form-control" placeholder="Nguyen Van A" name="hoten" value="">
+                                <input type="text"  class="form-control" placeholder="Nguyen Van A" name="hoten" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['hoten']?>">
                                 <?php if(isset($error['hoten'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['hoten']?></p>
                                 <?php endif;?>
                             </div>
                             <label for="" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-4">
-                                <input type="text"  class="form-control" placeholder="vana_grooo@gmail.vn" value="<?php echo $data['email']?>" name="email">
+                                <input type="text"  class="form-control" placeholder="vana_grooo@gmail.vn" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['email']?>" name="email">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">So dien thoai</label>
                             <div class="col-sm-4">
-                                <input type="number"  class="form-control" placeholder="0123456789" value="<?php echo $data['sdt']?>" name="sdt">
+                                <input type="number"  class="form-control" placeholder="0123456789" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['sdt']?>" name="sdt">
                                 <?php if(isset($error['sdt'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['sdt']?></p>
                                 <?php endif;?>
                             </div>
                             <label for="" class="col-sm-2 col-form-label">Dia chi</label>
                             <div class="col-sm-4">
-                                <input type="text"  class="form-control" placeholder=" 112 Nguyễn Văn Cừ, P.Bồ Đề, Q. Long Biên, Hà Nội" value="<?php echo $data['diachi']?>" name="diachi">
+                                <input type="text"  class="form-control" placeholder=" 112 Nguyễn Văn Cừ, P.Bồ Đề, Q. Long Biên, Hà Nội" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['hoten']?>" name="diachi">
                                 <?php if(isset($error['diachi'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['diachi']?></p>
                                 <?php endif;?>
@@ -121,36 +122,21 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">Gioi tinh</label>
                             <div class="col-sm-4">
-                                <input type="radio" name="gioitinh" value="nam">Nam<br>
-                                <input type="radio" name="gioitinh" value="nu">Nu<br>
+                                <input type="radio" name="gioitinh" <?php echo (isset($_SESSION['saved-data']['gioitinh']) == 'nam') ? "checked" : "" ?> value="nam">Nam<br>
+                                <input type="radio" name="gioitinh" <?php isset($_SESSION['saved-data']['gioitinh']) == 'nu' ? "checked" : "" ?> value="nu">Nu<br>
                             </div>
                             <label for="" class="col-sm-2 col-form-label">Ngay sinh</label>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" name="ngaysinh" value="<?php echo $data['ngaysinh']?>">
+                                <input type="date" class="form-control" name="ngaysinh" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['ngaysinh']?>">
                                 <?php if(isset($error['ngaysinh'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['ngaysinh']?></p>
                                 <?php endif;?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="" class="col-sm-2 col-form-label">Ngay dat</label>
-                            <div class="col-sm-4">
-                                <input type="date" class="form-control" name="ngaydat" value="" min="<?php echo $today?>">
-                                <?php if(isset($error['ngaydat'])):?>
-                                    <p class="bg-danger text-danger"><?php echo $error['ngaydat']?></p>
-                                <?php endif;?>
-                            </div><label for="" class="col-sm-2 col-form-label">Ngay tra</label>
-                            <div class="col-sm-4">
-                                <input type="date" class="form-control" name="ngaytra" value="" min="<?php echo $today?>">
-                                <?php if(isset($error['ngaytra'])):?>
-                                    <p class="bg-danger text-danger"><?php echo $error['ngaytra']?></p>
-                                <?php endif;?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">So CMND</label>
                             <div class="col-sm-4">
-                                <input type="number"  class="form-control" placeholder="123456789" name="socmnd" value="<?php echo $data['socmnd']?>">
+                                <input type="number"  class="form-control" placeholder="123456789" name="socmnd" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['socmnd'] ?>">
                                 <?php if(isset($error['socmnd'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['socmnd']?></p>
                                 <?php endif;?>

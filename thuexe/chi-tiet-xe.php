@@ -11,8 +11,28 @@
     foreach ($resSql as $key) :
         $maloai = intval($key['maloai']);
     endforeach;
-    $xeKhac = "SELECT * FROM xe WHERE maloai = $maloai AND maxe <> $maxe";
+    $xeKhac = "SELECT * FROM xe WHERE maloai = $maloai AND maxe <> $maxe and gia <> 0";
     $resXeKhac = $db->fetchSql($xeKhac);
+
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        $error =[];
+        if(postInput('ngaydat') == ''){
+            $error['ngaydat'] = "Ban chua nhap ngay dat";
+        }
+        if(postInput('ngaytra') == ''){
+            $error['ngaytra'] = "Ban chua nhap ngay tra";
+        }
+        if(empty($error))
+        {
+            $_SESSION['tem_maxe'] = $maxe;
+            echo "
+                <script>
+                    location.href = 'validate-form.php';
+                </script>
+            ";
+        }
+    }
 
     //Restriction for customer
 
@@ -28,13 +48,40 @@
                 <span class="col-md-8 content">
                     <h3 style="margin-top: -4px;">Cho thue xe <?php echo $getXe['tenxe']?></h3>
                     <h4 style="margin-top: -4px;" class="text-muted">Gia thue: <span class="text-warning text-capitalize"><?php echo number_format($getXe['gia'])?>  VND</span> </h4>
-                    <br>
-                    <div class="right">
-                        <a href="validate-form.php?maxe=<?php echo $maxe?>" id="accept" class="btn btn-info">THUE XE
-                            <span>  </span>
-                        </a>
-                        <br />
-                    </div>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="right">
+                            <button type="submit" id="accept" class="btn btn-info">THUE XE
+                                <span>  </span>
+                            </button>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="form-group row ">
+                            <div class="row ">
+                                <div class="col-sm-6">
+                                    <label for="" class="mr-4 col-form-label">Ngay dat</label>
+                                    <i class=" far fa-calendar-alt"></i>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="" class="mr-4 col-form-label">Ngay tra</label>
+                                    <i class=" far fa-calendar-alt"></i>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input type="datetime-local" class="form-control" name="ngaydat" value="" min="<?php echo $today?>">
+                                    <?php if(isset($error['ngaydat'])):?>
+                                        <p class="bg-danger text-danger"><?php echo $error['ngaydat']?></p>
+                                    <?php endif;?>
+                                </div>
+                                <div class="col-sm-5 col-sm-offset-1">
+                                    <input type="datetime-local" class="form-control" name="ngaytra" value="" min="<?php echo $today?>">
+                                    <?php if(isset($error['ngaytra'])):?>
+                                        <p class="bg-danger text-danger"><?php echo $error['ngaytra']?></p>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                 </span>
             </div>
             <div class="row content ml-5">

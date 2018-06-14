@@ -2,11 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: minhnhat
- * Date: 11/05/2018
- * Time: 07:54
+ * Date: 12/06/2018
+ * Time: 10:49
  */
-    $open = "motobike";
-    require_once __DIR__. "/../../autoload/autoload.php";
+?>
+<?php
+    $open = "e-bike";
+    require_once __DIR__. "/../../../autoload/autoload.php";
 
     $maxe = intval(getInput('maxe'));
 
@@ -14,7 +16,7 @@
     if(empty($EditScooter))
     {
         $_SESSION['error'] = "Thong tin xe khong ton tai";
-        redirectAdmin('vehicle/motobike');
+        redirectAdmin('vehicle/e-bike');
     }
 
 
@@ -23,7 +25,7 @@
 
     if($update > 0){
         $_SESSION['success'] = "Cap nhat hien thi xe duoc thuc hien";
-        redirectAdmin('vehicle/motobike');
+        redirectAdmin('vehicle/e-bike');
     }else{
         $_SESSION['error'] = "Du lieu hien thi xe chua duoc cap nhat";
     }

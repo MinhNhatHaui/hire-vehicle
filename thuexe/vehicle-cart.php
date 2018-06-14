@@ -10,13 +10,15 @@
     $tQuaty = 0;
 //    var_dump($_SESSION['cart']);
     //Kiem tra neu khong con xe thi don hang khong ton tai
-    if(! isset($_SESSION['cart']) ){
+    if($_SESSION['cart'] == null ){
         echo "<script>
                 alert('Khong co xe trong don dat' +
                  ' Moi ban chon lai xe');
                 location.href='bao-gia.php';
         
             </script>";
+        unset($_SESSION['tongxe']);
+        unset($_SESSION['tongtien']);
     }
 
 
@@ -70,11 +72,14 @@
         <div class="col-md-5 col-md-offset-7" style="margin-top: 30px">
             <ul class="list-group list-group-flush" style="font-size: 20px;">
                 <li class="list-group-item list-group-item-info text-capitalize text-center"><h3>Thong tin don dat xe</h3></li>
-                <li class="list-group-item">Tong tien
-                    <span class="badge badge-primary badge-pill"><?php echo number_format($_SESSION['tongtien'])?>  VND </span>
-                </li>
                 <li class="list-group-item">So luong xe
                     <span class="badge badge-primary badge-pill"><?php echo $_SESSION['tongxe']?></span>
+                </li>
+                <li class="list-group-item">Thoi gian muon
+                    <span class="badge badge-primary badge-pill"><?php echo $_SESSION['tongxe']?></span>
+                </li>
+                <li class="list-group-item">Tong tien
+                    <span class="badge badge-primary badge-pill"><?php echo number_format($_SESSION['tongtien'])?>  VND </span>
                 </li>
                 <li class="list-group-item">
                     <a href="bao-gia.php" class="btn btn-success">Tiep tuc chon xe</a>

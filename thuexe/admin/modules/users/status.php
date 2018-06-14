@@ -23,18 +23,18 @@ if(empty($selected))
 //Xu ly tinh trang don dat xe
     //Kiem tra
     $checkProcess = $selected['status'] == 0 ? 1 : 0;
-var_dump($checkProcess);
+//var_dump($checkProcess);
     if( $checkProcess == 1){
         $update = $db->update('users',array('status' => $checkProcess),array('id'=>$id_xe));
 
     //Update tinh trang dat xe
         if($update > 0){
-            $sql = "SELECT maxe, soluong FROM xe WHERE maxe = ".$selected['maxe'];
+            $sql = "SELECT id, soluong FROM xe WHERE id = ".$selected['id'];
             $resSql = $db->fetchSql($sql);
             //        var_dump($resSql);
                 foreach ($resSql as $item){
                     $soluong = $item['soluong'] - $selected['soluong'];
-                    $update_qty = $db->update('xe',array('soluong'=>$soluong),array('maxe'=>$selected['maxe']));
+                    $update_qty = $db->update('xe',array('soluong'=>$soluong),array('id'=>$selected['id']));
                 }
 
                 $_SESSION['success'] = "Cap nhat tinh trang dat xe duoc thuc hien";
@@ -46,12 +46,12 @@ var_dump($checkProcess);
 
     //Update tinh trang dat xe
             if($update > 0){
-                $sql = "SELECT maxe, soluong FROM xe WHERE maxe = ".$selected['maxe'];
+                $sql = "SELECT id, soluong FROM xe WHERE id = ".$selected['id'];
                 $resSql = $db->fetchSql($sql);
                 //        var_dump($resSql);
                 foreach ($resSql as $item){
                     $soluong = $item['soluong'] + $selected['soluong'];
-                    $update_qty = $db->update('xe',array('soluong'=>$soluong),array('maxe'=>$selected['maxe']));
+                    $update_qty = $db->update('xe',array('soluong'=>$soluong),array('id'=>$selected['id']));
                 }
         }
 

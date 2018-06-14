@@ -5,8 +5,9 @@ $resSql = $db->fetchSql($sql);
 
 foreach ($resSql as $item) {
     $maloai = intval($item['maloai']);
-    $id_maloai = "SELECT * FROM xe WHERE maloai = $maloai AND soluong <>   0";
+    $id_maloai = "SELECT * FROM xe WHERE maloai = $maloai AND status <> 0";
     $res_idmaloai = $db->fetchSql($id_maloai);
+//    var_dump($id_maloai);
     $data[$item['tenloaixe']] = $res_idmaloai;
 }
 //    var_dump($data);
@@ -23,7 +24,7 @@ foreach ($resSql as $item) {
 <!--                o day co the phan trang rieng cho tung muc-->
                     <?php foreach ($value as $item): ?>
                             <div class="card col-md-3" style="margin-bottom: 20px; border-top: 1px solid grey">
-                                <a href="chi-tiet-xe.php?maxe=<?php echo $item['maxe']?>/<?php echo $item['slug']?>">
+                                <a href="chi-tiet-xe.php?maxe=<?php echo $item['maxe']?>">
                                     <img class="card-img-top" style="margin-top: 5px"
                                          src="<?php echo base_url() ?>public/uploads/xe/<?php echo $item['hinhanh'] ?>"
                                          alt="" width="200px" height="200px">
@@ -35,7 +36,7 @@ foreach ($resSql as $item) {
                                     <h5><strong>Gia:</strong> <?php echo number_format($item['gia']) ?></h5>
                                 </div>
                                 <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    <small class="text-muted">&#9733; &#9733; &#9734; &#9734;</small>
                                 </div>
                             </div>
                     <?php endforeach; ?>

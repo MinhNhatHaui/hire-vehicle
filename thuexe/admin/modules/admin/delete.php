@@ -12,7 +12,7 @@
     $admin = $db->delete('quantrivien','id',$maAdmin);
     if($admin > 0){
         $_SESSION['success'] = "Xoa thanh cong admin ";
-        redirectAdmin('admin');
+//        redirectAdmin('admin');
     }else{
         $_SESSION['error'] = "Admin chua duoc xoa";
         redirectAdmin('admin');

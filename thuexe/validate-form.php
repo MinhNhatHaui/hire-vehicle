@@ -5,8 +5,12 @@
  * Date: 21/05/2018
  * Time: 22:44
  */
-    $maxe = intval(getInput('maxe'));
-    $getXe = $db->fetchID('xe','maxe',$maxe);
+    if (isset($_SESSION['tem_maxe']))
+    {
+        $maxe = intval($_SESSION['tem_maxe']);
+        $getXe = $db->fetchID('xe','maxe',$maxe);
+    }
+
 //    var_dump($getXe);
     if(isset($_SESSION['cart'][$maxe]))
     {
@@ -20,7 +24,8 @@
 
     }
 //    var_dump($_SESSION['cart'][$maxe]);
-    echo "<script>alert('Them xe thanh cong');
+    echo "<script>
+//            alert('Them xe thanh cong');
             location.href='vehicle-cart.php';  
           </script>"
 ?>

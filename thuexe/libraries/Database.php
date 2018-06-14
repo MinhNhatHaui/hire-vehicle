@@ -16,8 +16,11 @@ class Database
     public function insert($table, array $data)
     {
         //code
-        $reset_id = "ALTER TABLE {$table} AUTO_INCREMENT =1";
+        $reset_id = "ALTER TABLE {$table} AUTO_INCREMENT =1;";
         mysqli_query($this->link,$reset_id);
+        // turn off foreign key check
+            $t_off = "SET FOREIGN_KEY_CHECKS=0;";
+            mysqli_query($this->link,$t_off);
         $sql = "INSERT INTO {$table} ";
         $columns = implode(',', array_keys($data));
         $values  = "";
@@ -31,6 +34,8 @@ class Database
         }
         $values = substr($values, 0, -1);
         $sql .= " VALUES (" . $values . ')';
+            $t_on = "SET FOREIGN_KEY_CHECKS = 1;";
+            mysqli_query($this->link,$t_on);
 //        var_dump($sql);
         mysqli_query($this->link, $sql) or die("Lỗi  query  insert ----" .mysqli_error($this->link));
         return mysqli_insert_id($this->link);
@@ -184,15 +189,18 @@ class Database
 
     public function fetchID($table,$col, $id){
         $sql = "SELECT * FROM {$table} WHERE $col = $id";
+//        var_dump($sql);
         $result = mysqli_query($this->link, $sql) or die ("Loi truy van fetchID: " .mysqli_error($this->link));
         return mysqli_fetch_assoc($result);
     }
 
-    public function delete($table,$col,$id)
+    public function delete($table,$col,$val)
     {
-        $sql = "DELETE FROM {$table} WHERE ". $col." = $id";
+        $sql = "DELETE FROM {$table} WHERE ". $col." = $val";
+//        var_dump($sql);
         mysqli_query($this->link, $sql) or die (" Loi truy van deleteLoaiXe: " .mysqli_error($this->link));
         return mysqli_affected_rows($this->link);
+//        var_dump($sql);
     }
 
 

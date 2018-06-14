@@ -39,6 +39,7 @@ $open = 'datxe';
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Tinh trang xu ly</th>
+                    <th>Chi tiet</th>
                     <th>Dia chi</th>
                     <th>So CMND</th>
                     <th>Hanh dong</th>
@@ -55,6 +56,7 @@ $open = 'datxe';
                             <?php echo $item['status'] == 1 ? 'Duoc xu ly' : 'Chua duoc xu ly' ?>
                         </a>
                     </td>
+                    <td><a href="detail.php?id=<?php echo $item['id']?>">Chi tiet</a></td>
                     <td><?php echo $item['diachi']; ?></td>
                     <td><?php echo $item['socmnd']; ?></td>
                     <td>

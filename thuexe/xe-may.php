@@ -24,7 +24,7 @@ $path = $_SERVER['SCRIPT_NAME'];
                 <?php foreach ($pageginate as $item):?>
                 <div class="col-md-3">
                 <div class="card h-100" style="border-right: 2px solid red;margin-top: 50px;">
-                    <a href="<?php echo $item['maxe']?>/<?php echo $item['slug']?>.html"><img class="card-img-top" src="<?php echo base_url()?>public/uploads/xe/<?php echo $item['hinhanh'] ?>"
+                    <a href="chi-tiet-xe.php?maxe=<?php echo $item['maxe']?>"><img class="card-img-top" src="<?php echo base_url()?>public/uploads/xe/<?php echo $item['hinhanh'] ?>"
                                      alt="" width="150px" height="100px"></a>
                     <div class="card-body">
                         <h4 class="card-title">

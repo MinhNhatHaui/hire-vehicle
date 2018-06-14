@@ -2,28 +2,30 @@
 /**
  * Created by PhpStorm.
  * User: minhnhat
- * Date: 11/05/2018
- * Time: 07:54
+ * Date: 12/06/2018
+ * Time: 10:49
  */
-    $open = "motobike";
-    require_once __DIR__. "/../../autoload/autoload.php";
+?>
+<?php
+    $open = "bike";
+    require_once __DIR__. "/../../../autoload/autoload.php";
 
-    $maxe = intval(getInput('maxe'));
+    $id = intval(getInput('id'));
 
-    $EditScooter = $db->fetchID('xe','maxe',$maxe);
+    $EditScooter = $db->fetchID('xe','id',$id);
     if(empty($EditScooter))
     {
         $_SESSION['error'] = "Thong tin xe khong ton tai";
-        redirectAdmin('vehicle/motobike');
+        redirectAdmin('vehicle/bike');
     }
 
 
     $display = $EditScooter['status'] == 0 ? 1 : 0;
-    $update = $db->update('xe',array('status' => $display),array('maxe'=>$maxe));
+    $update = $db->update('xe',array('status' => $display),array('id'=>$id));
 
     if($update > 0){
         $_SESSION['success'] = "Cap nhat hien thi xe duoc thuc hien";
-        redirectAdmin('vehicle/motobike');
+        redirectAdmin('vehicle/bike');
     }else{
         $_SESSION['error'] = "Du lieu hien thi xe chua duoc cap nhat";
     }

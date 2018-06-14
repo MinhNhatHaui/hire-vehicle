@@ -47,11 +47,25 @@
                     <span class="nav-link-text">Danh sach cac loai xe</span>
                 </a>
             </li>
-            <li class="nav-item <?php echo isset($open) && $open == 'vehicle' ? 'active' : '' ?>">
-                <a class="nav-link" href=" <?php echo modules("vehicle")?>" >
-                    <i class="fa fa-fw fa-motorcycle"></i>
-                    <span class="nav-link-text">Danh sach cac xe</span>
-                </a>
+            <li data-toggle="tooltip" data-placement="right" title="Components" class="ml-2">
+                <div class="nav-item <?php echo isset($open) && $open == 'vehicle' ? 'active' : '' ?>"  >
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-motorcycle"></i>
+                        <span class="nav-link-text" >Danh sach cac xe</span>
+                    </a>
+                </div>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li class="nav-link <?php echo isset($open) && $open == 'motobike' ? 'active' : '' ?>">
+                        <a class="nav-link" href=" <?php echo modules("vehicle/motobike")?>">Xe may</a>
+                    </li>
+                    <li class="nav-link <?php echo isset($open) && $open == 'e-bike' ? 'active' : '' ?>">
+                        <a class="nav-link" href="<?php echo modules('vehicle/e-bike')?>">Xe dap dien</a>
+                    </li>
+                    <li class="nav-link <?php echo isset($open) && $open == 'bike' ? 'active' : '' ?>">
+                        <a class="nav-link" href="<?php echo modules('vehicle/bike')?>">Xe dap</a>
+                    </li>
+                </ul>
+
             </li>
             <li class="nav-item <?php echo isset($open) && $open == 'admin' ? 'active' : '' ?>">
                 <a class="nav-link" href=" <?php echo modules("admin")?>" >
