@@ -7,7 +7,7 @@
  */
     if (isset($_SESSION['tem_maxe']))
     {
-        $maxe = intval($_SESSION['tem_maxe']);
+        $maxe = intval($_SESSION['temgit _maxe']);
         $getXe = $db->fetchID('xe','maxe',$maxe);
     }
 
