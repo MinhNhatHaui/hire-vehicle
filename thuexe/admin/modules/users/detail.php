@@ -34,7 +34,9 @@
                         <th>Ma xe</th>
                         <th>So luong</th>
                         <th>Hinh anh</th>
-                        <th>Phone</th>
+                        <th>Thoi gian thue</th>
+                        <th>Thanh tien</th>
+                        <th>So dien thoai</th>
                         <th>Dia chi</th>
                         <th>Email</th>
                         <th>Ngay sinh</th>
@@ -51,6 +53,8 @@
                         <td>
                             <img src="<?php echo base_url()?>/public/uploads/xe/<?php echo $getXe['hinhanh']?>" alt="" width="100px">
                         </td>
+                        <td><?php echo $getCustomer['thoi_gian_thue']; ?></td>
+                        <td><?php echo number_format($getCustomer['thanh_tien']); ?> VND</td>
                         <td><?php echo $getCustomer['sdt']; ?></td>
                         <td><?php echo $getCustomer['diachi']?></td>
                         <td><?php echo $getCustomer['email']; ?></td>

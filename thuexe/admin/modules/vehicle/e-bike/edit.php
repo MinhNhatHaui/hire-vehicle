@@ -48,10 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $part = ROOT . "xe/";
                 $data['hinhanh'] = $file_name;
             }
-        }/*else{
-            $part = ROOT . "xe/";
-            $data['hinhanh'] = $EditVehicle['hinhanh'];
-        }*/
+            else{
+                $part = ROOT . "xe/";
+                $data['hinhanh'] = $EditVehicle['hinhanh'];
+            }
+        }
         if($data['soluong'] == 0 )
         {
             $data['status'] = 0;
@@ -83,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <a href="../../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#">Danh sach cac xe</a>
+                <a href="../e-bike/index.php">Danh sach cac xe</a>
             </li>
             <li class="breadcrumb-item active">
                 Them moi xe
@@ -98,22 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <!--                action ko de gi se duoc xu ly tren trang dau-->
             <form action="" method="post" enctype="multipart/form-data">
                 <form>
-                    <!--<div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Loai xe</label>
-                        <div class="col-sm-3">
-                            <select class="form-control" name="maloai" id="">
-                                <?php /*foreach ($loaixe as $item): */?>
-                                    <option value="<?php /*echo $item['maloai'] */?>"
-                                        <?php /*echo $EditVehicle['maloai'] == $item['maloai'] ? "selected = 'selected'" : '' */?>>
-                                        <?php /*echo $item['tenloaixe'] */?>
-                                    </option>
-                                <?php /*endforeach */?>
-                            </select>
-                            <?php /*if (isset($error['maloai'])): */?>
-                                <p class="text-danger"> <?php /*echo $error['maloai'] */?> </p>
-                            <?php /*endif */?>
-                        </div>
-                    </div>-->
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Ma xe</label>
                         <div class="col-sm-3">

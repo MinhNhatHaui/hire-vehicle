@@ -19,13 +19,19 @@
         $error =[];
         if(postInput('ngaydat') == ''){
             $error['ngaydat'] = "Ban chua nhap ngay dat";
+        }else{
+            $ngaydat = postInput('ngaydat');
         }
         if(postInput('ngaytra') == ''){
             $error['ngaytra'] = "Ban chua nhap ngay tra";
+        }else{
+            $ngaytra = postInput('ngaytra');
         }
         if(empty($error))
         {
             $_SESSION['tem_maxe'] = $maxe;
+            $_SESSION['tem_ngaydat'] = $ngaydat;
+            $_SESSION['tem_ngaytra'] = $ngaytra;
             echo "
                 <script>
                     location.href = 'validate-form.php';

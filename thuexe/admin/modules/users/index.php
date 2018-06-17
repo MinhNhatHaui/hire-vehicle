@@ -18,7 +18,7 @@ $open = 'datxe';
 ?>
 <?php require_once __DIR__. "/../../layouts/header.php" ?>
 <div class="content-wrapper">
-    <div class="container-fluid">
+    <div class="mt-3 container-fluid">
         <h3>Quan ly dat xe</h3>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">

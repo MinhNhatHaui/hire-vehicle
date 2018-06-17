@@ -28,14 +28,15 @@
                     {
                         alert("Cap nhat dat xe thanh cong");
                         location.href='/../vehicle-cart.php';
-                    }else
+                    }
+                    else
                     {
                         alert('kkk');
                     }
-                }
+                },
             });
 
 
-        })
-    })
+        });
+    });
 </script>

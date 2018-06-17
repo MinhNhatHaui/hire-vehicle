@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if (empty($error)) {
+
         if(isset($_FILES['hinhanh']))
         {
             $file_name  = $_FILES['hinhanh']['name'];
@@ -47,14 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $file_error = $_FILES['hinhanh']['error'];
 
             if($file_error == 0)
-            {
+                {
+                    $part = ROOT . "xe/";
+                    $data['hinhanh'] = $file_name;
+                }
+            else{
                 $part = ROOT . "xe/";
-                $data['hinhanh'] = $file_name;
+                $data['hinhanh'] = $EditVehicle['hinhanh'];
             }
-        }/*else{
-            $part = ROOT . "xe/";
-            $data['hinhanh'] = $EditVehicle['hinhanh'];
-        }*/
+        }
+
         if($data['soluong'] == 0 )
         {
             $data['status'] = 0;
@@ -64,14 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($id_update > 0) {
             move_uploaded_file($file_tmp,$part.$file_name);
             $_SESSION['success'] = "Cap nhat thanh cong";
-            redirectAdmin("vehicle/motobike");
+//            redirectAdmin("vehicle/motobike");
         } else {
             $_SESSION['error'] = "Du lieu khong duoc thay doi";
-            redirectAdmin("vehicle/motobike");
+//            redirectAdmin("vehicle/motobike");
         }
 
     }
-    var_dump($data['hinhanh']);
+//    var_dump($data['hinhanh']);
 
 }
 ?>

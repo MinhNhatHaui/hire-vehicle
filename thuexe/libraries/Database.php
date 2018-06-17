@@ -9,8 +9,15 @@ class Database
         //cau hinh database
         $this->link = mysqli_connect("thuexe.haui.vn","root","123456","thuexe1") or die();
         mysqli_set_charset($this->link,"utf8");
+
         //chuyen ve tieng viet
 
+    }
+
+    public function checkNote()
+    {
+        $sql = "SELECT status FROM users where status <> 1";
+        return $resSql = mysqli_query($this->link, $sql)->num_rows;
     }
 
     public function insert($table, array $data)

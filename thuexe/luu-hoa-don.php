@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . "/autoload/autoload.php";var_dump($_SESSION['saved-data'])?>
+<?php require_once __DIR__ . "/autoload/autoload.php";?>
 <?php if(!isset($_SESSION['cart']))
     {
         echo "<script>
@@ -9,11 +9,13 @@
     }
 ?>
 <?php foreach($_SESSION['cart'] as $key => $value): ?>
-<?php if(isset($_SESSION['cart']))
+<?php
+    if(isset($_SESSION['cart']))
         {
-
             $data = [
                 "maxe"=>$key,
+                "thanh_tien"=>$_SESSION['tongtien'],
+                "thoi_gian_thue"=>($value['ngaydat']->diff($value['ngaytra']))->format('%d ngay %h gio %i phut'),
                 "hoten" => postInput('hoten'),
                 "email" => postInput('email'),
                 "soluong" =>$value['soluong'],
@@ -21,8 +23,8 @@
                 "gioitinh" => postInput('gioitinh'),
                 "diachi" => postInput('diachi'),
                 "ngaysinh" => postInput('ngaysinh'),
-                "ngaydat" => postInput('ngaydat'),
-                "ngaytra" => postInput('ngaytra'),
+                "ngaydat" => $value['ngaydat']->date,
+                "ngaytra" => $value['ngaytra']->date,
                 "socmnd" => postInput('socmnd'),
                 "ghichu" => postInput('ghichu'),
             ];
@@ -40,19 +42,16 @@
                 if(postInput('ngaysinh') == ''){
                     $error['ngaysinh'] = "Ban chua nhap ngay sinh";
                 }
-                if(postInput('ngaydat') == ''){
-                    $error['ngaydat'] = "Ban chua nhap ngay sinh";
-                }
-                if(postInput('ngaytra') == ''){
-                    $error['ngaytra'] = "Ban chua nhap ngay sinh";
-                }
                 if(postInput('diachi') == ''){
                     $error['diachi'] = "Ban chua nhap dia chi";
                 }
                 if(postInput('socmnd') == ''){
                     $error['socmnd'] = "Ban chua nhap so chung minh thu nhan dan";
                 }
+
                 if(empty($error)){
+//                    var_dump($data);
+//                    $db->getKeyOff();
                     $user_id = $db->insert("users",$data);
                     if($user_id > 0){
                         $_SESSION['ok'] = 'Da luu thong tin';
@@ -63,10 +62,12 @@
         }
         endforeach;
                 if(isset($_SESSION['ok'])){
-
+//    var_dump($data);
                     unset($_SESSION['cart']);
                     unset($_SESSION['tongxe']);
                     unset($_SESSION['ok']);
+//                    var_dump($_SESSION['tongxe']);
+//                    var_dump($_SESSION['tongtien']);
                     echo "<script>
                                 alert('Chung toi da luu lai thong tin thue xe cua ban!' +
                                  ' Hen ban ngay gan nhat den cua hang de nhan xe');
@@ -136,7 +137,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-2 col-form-label">So CMND</label>
                             <div class="col-sm-4">
-                                <input type="number"  class="form-control" placeholder="123456789" name="socmnd" value="<?php if(isset($_SESSION['saved-data'])) echo $_SESSION['saved-data']['socmnd'] ?>">
+                                <input type="number"  class="form-control" placeholder="123456789" name="socmnd" value="">
                                 <?php if(isset($error['socmnd'])):?>
                                     <p class="bg-danger text-danger"><?php echo $error['socmnd']?></p>
                                 <?php endif;?>

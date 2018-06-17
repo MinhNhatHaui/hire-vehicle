@@ -9,7 +9,10 @@
     }
 
     require_once __DIR__ . "/../autoload/autoload.php";
-//    if()
+
+    $a = $db->checkNote();
+    $sql = "SELECT hoten FROM users where status <> 1";
+    $resSql = $db->fetchSql($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +38,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="">TRANG QUAN LY WEBSITE</a>
+    <a class="navbar-brand" href="/admin/index.php">TRANG QUAN LY WEBSITE</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,24 +84,32 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <?php if($a > 0) : ?>
+                        <span class="indicator text-warning d-none d-lg-block">
+                            <i class="fa fa-fw fa-circle"></i>
+                        </span>
+                        <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                            <?php foreach ($resSql as $person) :?>
+                                <div>
+                                    <a href="<?php echo modules("users")?>"><?php echo $person['hoten']?></a>
+                                    <span class="ml-2" style="font-size: 15px">
+                                        có đơn hàng mới
+                                    </span>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+                    <?php endif; ?>
+
+                </a>
+
+            </li>
             <li>
                 <a class="nav-link  mr-lg-2" >
                     <p>Xin chao: <span class="text-capitalize text-success"><?php echo $_SESSION['name_admin']?></span></p>
                 </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-fw fa-bell"></i>
-                    <span class="d-lg-none">Alerts
-                        <span class="badge badge-pill badge-warning">asdsdds</span>
-                    </span>
-                    <span class="indicator text-warning d-none d-lg-block">
-                        <i class="fa fa-fw fa-circle"></i>
-                    </span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-
-                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" href="/exit.php" data-target="#exampleModal">

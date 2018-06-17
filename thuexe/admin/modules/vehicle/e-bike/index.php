@@ -14,7 +14,7 @@ $getListMoto = $db->fetchSql($sql);
 ?>
 <?php require_once __DIR__. "/../../../layouts/header.php";?>
 <div class="content-wrapper">
-    <div class="container-fluid">
+    <div class="mt-3 container-fluid">
         <h3>Quan ly thong tin cac xe
             <a href="add.php" class="btn btn-success">Them moi</a>
         </h3>
@@ -41,7 +41,7 @@ $getListMoto = $db->fetchSql($sql);
                     <th scope="col">Hinh anh</th>
                     <th scope="col">So luong</th>
                     <th scope="col">Gia</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Tinh trang xe</th>
                     <th scope="col">Duoc tao luc</th>
                     <th scope="col">Action</th>
                 </tr>

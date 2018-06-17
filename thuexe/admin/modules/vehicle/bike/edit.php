@@ -46,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $part = ROOT . "xe/";
                 $data['hinhanh'] = $file_name;
             }
-        }/*else{
-            $part = ROOT . "xe/";
-            $data['hinhanh'] = $EditVehicle['hinhanh'];
-        }*/
+            else{
+                $part = ROOT . "xe/";
+                $data['hinhanh'] = $EditVehicle['hinhanh'];
+            }
+        }
         if($data['soluong'] == 0 )
         {
             $data['status'] = 0;
@@ -81,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <a href="../../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#">Danh sach cac xe</a>
+                <a href="../bike/index.php">Danh sach cac xe</a>
             </li>
             <li class="breadcrumb-item active">
                 Them moi xe

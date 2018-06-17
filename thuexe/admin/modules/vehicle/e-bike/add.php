@@ -97,7 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
                 <a href="../../../index.php">Dashboard</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="#">Danh sach cac xe</a>
+                <a href="../e-bike/index.php">Danh sach cac xe</a>
             </li>
             <li class="breadcrumb-item active">
                 Them moi xe

@@ -7,8 +7,12 @@
  */
     if (isset($_SESSION['tem_maxe']))
     {
-        $maxe = intval($_SESSION['temgit _maxe']);
+        $maxe = intval($_SESSION['tem_maxe']);
         $getXe = $db->fetchID('xe','maxe',$maxe);
+
+        $ngaydat = new DateTime(date('Y-m-d h:i A',strtotime($_SESSION['tem_ngaydat'])));
+        $ngaytra = new DateTime(date('Y-m-d h:i A',strtotime($_SESSION['tem_ngaytra'])));
+
     }
 
 //    var_dump($getXe);
@@ -21,11 +25,13 @@
         $_SESSION['cart'][$maxe]['gia']  = $getXe['gia'];
         $_SESSION['cart'][$maxe]['hinhanh']  = $getXe['hinhanh'];
         $_SESSION['cart'][$maxe]['soluong']  = 1;
-
+        $_SESSION['cart'][$maxe]['ngaydat'] = $ngaydat;
+        $_SESSION['cart'][$maxe]['ngaytra'] = $ngaytra;
     }
-//    var_dump($_SESSION['cart'][$maxe]);
+//    var_dump($_SESSION['cart']);
     echo "<script>
-//            alert('Them xe thanh cong');
+            alert('Them xe thanh cong');
             location.href='vehicle-cart.php';  
-          </script>"
+          </script>";
+
 ?>

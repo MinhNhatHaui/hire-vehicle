@@ -6,8 +6,8 @@ $loai = $db->fetchAll("loai");
 ?>
 <?php require_once __DIR__. "/../../layouts/header.php"; ?>
 
-    <div class="content-wrapper">
-        <div class="container-fluid">
+    <div class=" content-wrapper">
+        <div class="mt-3 container-fluid">
             <h3>Danh sach danh muc
                 <a href="add.php" class="btn btn-success">Them moi</a>
             </h3>
@@ -50,15 +50,15 @@ $loai = $db->fetchAll("loai");
                             <?php $stt++;endforeach ?>
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example" class="pull-right">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+<!--                    <nav aria-label="Page navigation example" class="pull-right">-->
+<!--                        <ul class="pagination">-->
+<!--                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                            <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
+<!--                        </ul>-->
+<!--                    </nav>-->
                 </div>
             </div>
             <div>

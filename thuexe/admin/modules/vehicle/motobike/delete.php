@@ -16,7 +16,7 @@ $getMotobike =  $db->fetchID("xe",'id',$idxe);
 if(empty($getMotobike))
 {
     $_SESSION['error'] = "Du lieu khong ton tai ";
-    redirectAdmin("vehicle/motobike");
+//    redirectAdmin("vehicle/motobike");
 }
 
 $num = $db->delete("xe", 'id', $idxe);
